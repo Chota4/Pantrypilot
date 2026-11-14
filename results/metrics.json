@@ -1,0 +1,161 @@
+{
+  "ablation": {
+    "baseline": {
+      "waste_rate": 0.9105424904912622,
+      "wasted_items": 6.975,
+      "plan_violation_rate": 0.21,
+      "over_budget_rate": 0.215,
+      "acceptance": 0.6025,
+      "reward": 0.35125,
+      "avg_replans": 0,
+      "sessions": 200
+    },
+    "no_critic": {
+      "waste_rate": 0.7967664917947671,
+      "wasted_items": 6.105,
+      "plan_violation_rate": 0.14,
+      "over_budget_rate": 0,
+      "acceptance": 0.70625,
+      "reward": 0.65125,
+      "avg_replans": 0,
+      "sessions": 200
+    },
+    "no_memory": {
+      "waste_rate": 0.7911886760513075,
+      "wasted_items": 6.2,
+      "plan_violation_rate": 0,
+      "over_budget_rate": 0,
+      "acceptance": 0.6325,
+      "reward": 0.45,
+      "avg_replans": 0.42,
+      "sessions": 200
+    },
+    "full": {
+      "waste_rate": 0.7951936488167545,
+      "wasted_items": 6.125,
+      "plan_violation_rate": 0,
+      "over_budget_rate": 0,
+      "acceptance": 0.7175,
+      "reward": 0.67625,
+      "avg_replans": 0.315,
+      "sessions": 200
+    }
+  },
+  "tool_selection_accuracy": 1.0,
+  "tool_selection_detail": [
+    {
+      "text": "add 500g chicken expiring in 2 days",
+      "expected": "inventory_add",
+      "got": "inventory_add"
+    },
+    {
+      "text": "I bought 6 eggs",
+      "expected": "inventory_add",
+      "got": "inventory_add"
+    },
+    {
+      "text": "add 300g spinach in 1 days",
+      "expected": "inventory_add",
+      "got": "inventory_add"
+    },
+    {
+      "text": "got 2 kg potato",
+      "expected": "inventory_add",
+      "got": "inventory_add"
+    },
+    {
+      "text": "what is expiring soon?",
+      "expected": "expiry_ranker",
+      "got": "expiry_ranker"
+    },
+    {
+      "text": "what should I use up first",
+      "expected": "expiry_ranker",
+      "got": "expiry_ranker"
+    },
+    {
+      "text": "anything about to go bad?",
+      "expected": "expiry_ranker",
+      "got": "expiry_ranker"
+    },
+    {
+      "text": "plan 3 dinners",
+      "expected": "inventory_query",
+      "got": "inventory_query"
+    },
+    {
+      "text": "what can I cook tonight",
+      "expected": "inventory_query",
+      "got": "inventory_query"
+    },
+    {
+      "text": "plan 4 meals under $10 budget",
+      "expected": "inventory_query",
+      "got": "inventory_query"
+    },
+    {
+      "text": "make me a vegetarian menu for 2 days",
+      "expected": "inventory_query",
+      "got": "inventory_query"
+    },
+    {
+      "text": "show my shopping list",
+      "expected": "shopping_list_builder",
+      "got": "shopping_list_builder"
+    },
+    {
+      "text": "what do I need to buy?",
+      "expected": "shopping_list_builder",
+      "got": "shopping_list_builder"
+    },
+    {
+      "text": "tell me a joke",
+      "expected": null,
+      "got": null
+    },
+    {
+      "text": "what's the weather",
+      "expected": null,
+      "got": null
+    }
+  ],
+  "fault_injection": {
+    "0.0": {
+      "success_rate": 1.0,
+      "fallbacks_per_session": 0.0,
+      "waste_rate": 0.8937348352255282
+    },
+    "0.1": {
+      "success_rate": 1.0,
+      "fallbacks_per_session": 0.13333333333333333,
+      "waste_rate": 0.8937348352255282
+    },
+    "0.3": {
+      "success_rate": 1.0,
+      "fallbacks_per_session": 1.2333333333333334,
+      "waste_rate": 0.9031847278491674
+    },
+    "0.5": {
+      "success_rate": 1.0,
+      "fallbacks_per_session": 2.7333333333333334,
+      "waste_rate": 0.9230147604853879
+    },
+    "1.0": {
+      "success_rate": 1.0,
+      "fallbacks_per_session": 32.93333333333333,
+      "waste_rate": 0.9662463348081597
+    }
+  },
+  "tool_calls": {
+    "inventory_query": 600,
+    "expiry_ranker": 600,
+    "recipe_retriever": 2988,
+    "cost_calculator": 2988,
+    "nutrition_lookup": 2988,
+    "shopping_list_builder": 600
+  },
+  "latency_ms": {
+    "mean": 0.02692196209571025,
+    "p95": 0.0691000000188069
+  }
+}
